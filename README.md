@@ -63,7 +63,6 @@ The Bistro Restaurant Client is built with the following technologies:
 - React Router
 - Firebase Authentication
 - Axios
-- Chart.js
 - React Query
 - Tailwind CSS
 - Vite
