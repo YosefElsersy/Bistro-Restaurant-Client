@@ -1,0 +1,132 @@
+import { createBrowserRouter } from "react-router-dom";
+import Main from "../layout/Main";
+import Home from "../pages/home/Home";
+import Menu from "../pages/menuPage/Menu";
+import Signup from "../components/Signup";
+import Order from "../pages/dashboard/Order";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import UserProfile from "../pages/dashboard/UserProfile";
+import CartPage from "../pages/menuPage/CartPage";
+import Login from "../components/Login";
+import DashboardLayout from "../layout/DashboardLayout";
+import Dashboard from "../pages/dashboard/admin/Dashboard";
+import Users from "../pages/dashboard/admin/Users";
+import AddMenu from "../pages/dashboard/admin/AddMenu";
+import ManageItems from "../pages/dashboard/admin/ManageItems";
+import UpdateMenu from "../pages/dashboard/admin/UpdateMenu";
+import Payment from "../pages/menuPage/Payment";
+import MangageOrders from "../pages/dashboard/admin/MangageOrders";
+import ErrorPage from "../components/ErrorPage.jsx";
+import About from "../pages/about/About.jsx";
+import Contacts from "../pages/contacts/Contacts.jsx";
+import Messages from "../pages/dashboard/admin/Messages.jsx";
+
+
+
+
+const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Main/>,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+            path: "/",
+            element: <Home/>,
+            errorElement: <ErrorPage />
+        },
+        {
+          path: "/about",
+          element: <About/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: "/menu",
+          element: <Menu/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: "/order",
+          element:<PrivateRoute><Order/></PrivateRoute>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: "/update-profile",
+          element: <UserProfile/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: "/cart-page",
+          element: <CartPage/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path:"/process-checkout",
+          element:<Payment/>,
+          errorElement: <ErrorPage />
+        }
+        ,
+        {
+          path:"/contacts",
+          element:<Contacts/>,
+          errorElement: <ErrorPage />
+        }
+      ]
+    },
+    {
+      path: "/signup",
+      element: <Signup/>,
+      errorElement: <ErrorPage />
+    },
+    {
+      path: "/login",
+      element: <Login/>,
+      errorElement: <ErrorPage />
+    },
+    // admin routes
+    {
+      path: 'dashboard',
+      element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '',
+          element: <Dashboard/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: 'manage-orders', 
+          element: <MangageOrders/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: 'users', 
+          element: <Users/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: 'messages', 
+          element: <Messages/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: 'add-menu',
+          element: <AddMenu/>,
+          errorElement: <ErrorPage />
+        }, 
+        {
+          path: "manage-items",
+          element: <ManageItems/>,
+          errorElement: <ErrorPage />
+        },
+        {
+          path: "update-menu/:id",
+          element: <UpdateMenu/>,
+          errorElement: <ErrorPage />,
+          loader: ({params}) => fetch(`https://bistro-restaurant-server-na3r.onrender.com//menu/${params.id}`)
+        }
+      ]
+    }
+  ]);
+
+  export default router;
