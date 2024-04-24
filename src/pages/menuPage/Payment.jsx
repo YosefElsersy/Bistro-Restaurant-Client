@@ -8,10 +8,11 @@ const stripePromise = loadStripe(import.meta.env.VITE_Stripe_PK);
 const Payment = () => {
     const [cart] = useCart();
     console.log(cart);
-    // calculate the checkout prices
-    const cartTotal = cart.reduce((sum,item)=> sum + item.price ,0)
-    const totalPrice = parseFloat(cartTotal.toFixed(2));
-
+    
+    // Calculate the total price of items in the cart
+    const totalPrice = cart.reduce((total, item) => {
+        return total + (item.price * item.quantity);
+    }, 0);
 
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 py-28">
