@@ -45,7 +45,7 @@ Once you have installed the dependencies, you can start the development server b
 npm run dev
 ```
 
-This will start the development server, and you can access the Bistro Restaurant Client in your browser at `http://localhost:3000`.
+This will start the development server, and you can access the Bistro Restaurant Client in your browser at `http://localhost:5173`.
 
 ## Features
 
