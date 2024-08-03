@@ -6,6 +6,9 @@ Welcome to the Bistro Restaurant Client repository! This is the client-side appl
 
 ![Bistro Restaurant Preview](https://github.com/YosefElsersy/Bistro-Restaurant-Client/assets/124294506/105ec143-cdad-4c56-9b23-1116d01b8f50)
 
+##For Test Visa Cards : https://docs.stripe.com/testing
+
+
 ## Table of Contents
 
 - [Installation](#installation)
